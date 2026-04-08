@@ -77,8 +77,8 @@ class Gemma4AspectRatioResizing(keras.layers.Layer):
                 * ops.cast(side_mult, "float32"),
                 "int32",
             )
-            target_height = ops.maximum(target_height, side_mult)
-            target_width = ops.maximum(target_width, side_mult)
+            target_height = int(ops.maximum(target_height, side_mult))
+            target_width = int(ops.maximum(target_width, side_mult))
             float_inputs = ops.cast(inputs, "float32")
             # Resize using bicubic interpolation with antialias=True.
             #
